@@ -1,0 +1,78 @@
+#!/usr/bin/python
+from jobs import Jobs
+from houses import Houses
+from csp_solver import Solver
+from csp_solver import Global
+import time
+
+if __name__ == "__main__":
+
+
+    puzzleSolver = Solver()
+
+
+
+    jobspuzzle = Jobs()
+    jobsresult_backtracking = puzzleSolver.solve_by_backtracking(jobspuzzle)
+    jobsiterations_backtracking = Global.counter
+    Global.counter = 0
+    jobsresult_mrv = puzzleSolver.solve_by_mrv(jobspuzzle)
+    jobsiterations_mrv = Global.counter
+    Global.counter = 0
+
+
+    print
+    print
+    print
+    print "****************************Job Puzzle*********************************"
+    print
+    print "___________________________Backtracking________________________________"
+
+    for x in jobsresult_backtracking:
+        print "{0} : {1}".format(x, jobsresult_backtracking[x])
+    print
+    print "Number of states explored: {0}".format(jobsiterations_backtracking)
+    print
+
+    print "_______________________MRV (Minimum Remaining Values)__________________"
+    print
+    for x in jobsresult_mrv:
+        print "{0} : {1}".format(x, jobsresult_mrv[x])
+    print
+    print "Number of states explored: {0}".format(jobsiterations_mrv)
+
+
+
+    housepuzzle = Houses()
+    housesresult_backtracking = puzzleSolver.solve_by_backtracking(housepuzzle)
+    housesiteration_backtracking = Global.counter
+    Global.counter = 0
+    houseresult_mrv = puzzleSolver.solve_by_mrv(housepuzzle)
+    houseiterations_mrv = Global.counter
+
+    print
+    print
+    print
+    print "****************************House Puzzle*******************************"
+    print
+    print "___________________________Backtracking________________________________"
+
+    for x in housesresult_backtracking:
+        print "House {0} : {1}".format(x, housesresult_backtracking[x])
+    print
+    print "Number of states explored: {0}".format(housesiteration_backtracking)
+
+
+    print
+    print "_____________________MRV (Minimum Remaining Values)____________________"
+    print
+    for x in houseresult_mrv:
+        print "House {0} : {1}".format(x, houseresult_mrv[x])
+    print
+    print "Number of states explored {0}".format(houseiterations_mrv)
+
+
+
+
+
+
