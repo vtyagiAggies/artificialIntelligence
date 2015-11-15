@@ -1,0 +1,32 @@
+0: -P v -Q v R v S
+1: -A v -R
+2: A
+3: P
+4: Q
+5: -S
+Iteration 1, queue size 5, resolution on 1 and 2
+Resolving -A v -R and A
+6: -R generated from 1 and 2
+Iteration 2, queue size 5, resolution on 0 and 5
+Resolving -P v -Q v R v S and -S
+7: -P v -Q v R generated from 0 and 5
+Iteration 3, queue size 8, resolution on 3 and 7
+Resolving P and -P v -Q v R
+8: -Q v R generated from 3 and 7
+Iteration 4, queue size 10, resolution on 4 and 8
+Resolving Q and -Q v R
+9: R generated from 4 and 8
+Iteration 5, queue size 11, resolution on 6 and 9
+Resolving -R and R
+success! empty clause found
+10: [] [6, 9]
+  6: -R [1, 2]
+    1: -A v -R [input]
+    2: A [input]
+  9: R [4, 8]
+    4: Q [input]
+    8: -Q v R [3, 7]
+      3: P [input]
+      7: -P v -Q v R [0, 5]
+        0: -P v -Q v R v S [input]
+        5: -S [input]
